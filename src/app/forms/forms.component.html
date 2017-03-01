@@ -1,0 +1,49 @@
+
+
+Forms
+<div class="container">
+  <form #regForm="ngForm" (ngSubmit)="onSubmit(regForm.form)">
+
+  <div class="form-group">
+    <label for="in_name">Name</label>
+    <input #nameRef="ngModel" type="text" class="form-control" id="in_name" name="name" minlength="4" ngModel [required]="nameRef.touched">
+    <p *ngIf="nameRef.errors?.required">Name is required</p>
+  </div>
+
+  <div class="form-group">
+    <label for="in_surname">Surname</label>
+    <input type="text" class="form-control" id="in_surname" name="surname" minlength="4" ngModel required>
+  </div>
+
+  <div class="form-group">
+    <label for="in_email">Email</label>
+    <input type="text" class="form-control" id="in_email" name="email" minlength="4" pattern="" ngModel required>
+  </div>
+
+
+    <div class="form-group">
+      <label for="in_gender">Gender</label>
+      <select class="form-control" id="in_gender" name="gender" required ngModel>
+        <option >...</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Not Specified">Not Specified</option>
+      </select>
+    </div>
+
+
+    <div class="form-group">
+      <button class="form-control" type="submit" [disabled]="regForm.form.invalid">Submit</button>
+    </div>
+
+  </form>
+</div>
+<hr>
+<!--pattern="2[1,7] {0-6}"-->
+Name: {{regForm.value.name}}
+<br/>
+Surname: {{regForm.value.surname}}
+<br/>
+Email: {{regForm.value.email}}
+<br/>
+Gender: {{regForm.value.gender}}
