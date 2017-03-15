@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ToDoService} from "../to-do.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-todo',
@@ -9,16 +10,26 @@ import {ToDoService} from "../to-do.service";
 export class TodoComponent implements OnInit {
 
   private todoItems;
-  constructor(private todoService: ToDoService) { }
+  private todoItem: string = "";
+
+  constructor(private todoService: ToDoService
+              ,private router: Router) { }
 
   ngOnInit() {
-    this.todoService.findAll().subscribe( (todoItems) => {
+
+    this.todoService.findAll().subscribe(
+      (todoItems) => {
       this.todoItems = todoItems;
-    })
+    }, () => {
+        this.router.navigate(['/error']);
+      })
 
-    this.todoService.add().subscribe( (todoItem) => {
 
-    }
   }
 
+  public add()
+  {
+    this.todoItems.push(this.todoItem);
+    this.todoService.add().subscribe( );
+  }
 }

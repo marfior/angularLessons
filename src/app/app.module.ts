@@ -10,6 +10,9 @@ import { DoublePipe } from './double.pipe';
 import {ToDoService} from "./to-do.service";
 import {MockBackend} from "@angular/http/testing";
 import { TodoComponent } from './todo/todo.component';
+import { ErrorComponent } from './error/error.component';
+import {RouterModule} from "@angular/router";
+import {appRoutes} from "./app.routes";
 
 @NgModule({
   declarations: [
@@ -17,25 +20,28 @@ import { TodoComponent } from './todo/todo.component';
     FormsComponent,
     BannerComponent,
     DoublePipe,
-    TodoComponent
+    TodoComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    RouterModule.forRoot(appRoutes),
   ],
   providers: [ToDoService,
-    //{provide: XHRBackend, useClass: MockBackend }],
     MockBackend,
     BaseRequestOptions,
     {
       provide: Http,
       deps: [MockBackend, BaseRequestOptions],
-      useFactory: (backend, opts) => {
-        return new Http(backend, opts)
-      }
-
+      useFactory: HttpFactory
     }]
     ,bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
+export function HttpFactory(backend, opts) {
+  return new Http(backend, opts)
+}

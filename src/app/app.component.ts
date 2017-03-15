@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {MockBackend, MockConnection} from "@angular/http/testing";
-import {Response, RequestMethod} from "@angular/http";
+import {Response, RequestMethod, ResponseOptions} from "@angular/http";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-root',
@@ -17,12 +18,29 @@ export class AppComponent {
       {task: "testt", done: false},
       {task: "more to do", done: false}
     ];
+/*
+
 
     backend.connections.subscribe( (connection: MockConnection) => {
-        debugger;
+        //debugger;
+
         if (connection.request.method === RequestMethod.Post)
         {
-          connection.mockRespond(new Response(<any>{}));
+          let obsvResp = Observable.of({"todo":"tasktodo"}).delay(4000);
+
+          obsvResp.subscribe( (r: Object) => {
+            connection.mockRespond(new Response(<any> r));
+            console.log("test delay" + r);
+          }
+
+          ,(r: Object) => { connection.mockError(new Error("Internal Server ERror")) }
+                                //new Response(
+                                //          new ResponseOptions({
+                                //              body: JSON.stringify({error: 'Internal serever Error'}),
+                                //              status: 500,
+                                //          })
+                                //) ) }
+          );
 
         }
         else {
@@ -33,6 +51,7 @@ export class AppComponent {
         }
       }
     )
+    */
 
 
 
