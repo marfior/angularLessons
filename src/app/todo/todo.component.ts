@@ -20,9 +20,11 @@ export class TodoComponent implements OnInit {
     this.todoService.findAll().subscribe(
       (todoItems) => {
       this.todoItems = todoItems;
-    }, () => {
+    }
+    , () => {
         this.router.navigate(['/error']);
-      })
+            }
+    )
 
 
   }
@@ -30,6 +32,6 @@ export class TodoComponent implements OnInit {
   public add()
   {
     this.todoItems.push(this.todoItem);
-    this.todoService.add().subscribe( );
+    //this.todoService.add().subscribe( );
   }
 }

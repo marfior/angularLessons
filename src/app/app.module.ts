@@ -13,6 +13,7 @@ import { TodoComponent } from './todo/todo.component';
 import { ErrorComponent } from './error/error.component';
 import {RouterModule} from "@angular/router";
 import {appRoutes} from "./app.routes";
+import { CounterComponent } from './counter/counter.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {appRoutes} from "./app.routes";
     BannerComponent,
     DoublePipe,
     TodoComponent,
-    ErrorComponent
+    ErrorComponent,
+    CounterComponent
   ],
   imports: [
     BrowserModule,
