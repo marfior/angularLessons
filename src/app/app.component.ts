@@ -12,12 +12,14 @@ export class AppComponent {
   title = 'app works!';
 
 
-  constructor(backend: MockBackend){
+  constructor(backend: MockBackend) {
+    /*
     let todoList = [
       {task: "Laundry", done: false},
       {task: "testt", done: false},
       {task: "more to do", done: false}
     ];
+    */
 /*
 
 
@@ -56,10 +58,19 @@ export class AppComponent {
 
 
     //backend.connections.method()
+    let numbers = [100,101,102,103,104 ];
 
 
+    backend.connections.subscribe( (connection: MockConnection) => {
 
+      if (connection.request.method === RequestMethod.Get)
+      {
+        connection.mockRespond(new Response(new ResponseOptions(
+          {body: JSON.stringify(numbers),
+            status: 200})));
+      }
 
+    })
 
   }
 

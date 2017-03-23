@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpModule, XHRBackend, BaseRequestOptions, Http} from '@angular/http';
 
 import { AppComponent } from './app.component';
@@ -14,6 +14,8 @@ import { ErrorComponent } from './error/error.component';
 import {RouterModule} from "@angular/router";
 import {appRoutes} from "./app.routes";
 import { CounterComponent } from './counter/counter.component';
+import { ReactiveformComponent } from './reactiveform/reactiveform.component';
+import {NumbersService} from "./numbers.service";
 
 @NgModule({
   declarations: [
@@ -23,15 +25,19 @@ import { CounterComponent } from './counter/counter.component';
     DoublePipe,
     TodoComponent,
     ErrorComponent,
-    CounterComponent
+    CounterComponent,
+    ReactiveformComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     RouterModule.forRoot(appRoutes),
+    ReactiveFormsModule,
+
   ],
   providers: [ToDoService,
+    NumbersService,
     MockBackend,
     BaseRequestOptions,
     {
