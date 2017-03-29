@@ -1,0 +1,56 @@
+
+
+Reactive Forms
+<div class="container">
+  <form [formGroup]="myGroup" (ngSubmit)="onSubmit()">
+
+    <div class="form-group">
+      <label for="in_name">Name</label>
+      <input type="text" class="form-control" id="in_name" formControlName="name" minlength="4">
+    </div>
+
+    <div class="form-group">
+      <label for="in_firstno">First Number</label>
+      <input type="text" class="form-control" id="in_firstno" formControlName="firstNoControl" minlength="4">
+    </div>
+
+    <div class="form-group">
+      <label for="in_secondno">Second Number</label>
+      <input type="text" class="form-control" id="in_secondno" formControlName="secondNoControl" minlength="4">
+    </div>
+    <!--
+    <div class="form-group">
+      <label for="in_surname">Surname</label>
+      <input type="text" class="form-control" id="in_surname" name="surname" minlength="4" ngModel>
+    </div>
+
+    <div class="form-group">
+      <label for="in_password">Password</label>
+      <input type="password" class="form-control" id="in_password" name="password" minlength="4" ngModel>
+    </div>
+    -->
+
+
+
+    <div class="form-group">
+      <button class="form-control" type="submit" >Submit</button>
+    </div>
+
+  </form>
+</div>
+<hr>
+
+<ul *ngFor="let result of numbers">
+  <li>{{result}}</li>
+</ul>
+
+<!--
+pattern="2[1,7] {0-6}"
+Name: {{regForm.value.name}}
+<br/>
+Surname: {{regForm.value.surname}}
+<br/>
+Email: {{regForm.value.email}}
+<br/>
+Gender: {{regForm.value.gender}}
+-->

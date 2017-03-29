@@ -1,0 +1,8 @@
+<!--{{ todoItems | json}}-->
+
+<input type="text" [(ngModel)]="todoItem">
+
+<button (click)="add()" >Add To Do</button>
+<ul *ngFor="let result of todoItems">
+  <li>{{result}}</li>
+</ul>
